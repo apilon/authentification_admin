@@ -24,12 +24,16 @@ class ControleurCommentaires extends Controleur {
         $commentaire['auteur'] = $this->requete->getParametre('auteur');
         $validation_courriel = filter_var($commentaire['auteur'], FILTER_VALIDATE_EMAIL);
         if ($validation_courriel) {
-            $commentaire['titre'] = $this->requete->getParametre('titre');
-            $commentaire['texte'] = $this->requete->getParametre('texte');
-            // Ajuster la valeur de la case à cocher
-            $commentaire['prive'] = $this->requete->existeParametre('prive') ? 1 : 0;
-            // Ajouter le commentaire à l'aide du modèle
-            $this->commentaire->setCommentaire($commentaire);
+            if ($this->requete->getSession()->getAttribut("env") == 'prod') {
+                $this->requete->getSession()->setAttribut("message", "Ajouter un commentaire n'est pas permis en démonstration");
+            } else {
+                $commentaire['titre'] = $this->requete->getParametre('titre');
+                $commentaire['texte'] = $this->requete->getParametre('texte');
+                // Ajuster la valeur de la case à cocher
+                $commentaire['prive'] = $this->requete->existeParametre('prive') ? 1 : 0;
+                // Ajouter le commentaire à l'aide du modèle
+                $this->commentaire->setCommentaire($commentaire);
+            }
             // Éliminer un code d'erreur éventuel
             if ($this->requete->getSession()->existeAttribut('erreur')) {
                 $this->requete->getsession()->setAttribut('erreur', '');

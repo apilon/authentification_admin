@@ -46,7 +46,7 @@ class Routeur {
     private function creerControleur(Requete $requete) {
         // Grâce à la redirection, toutes les URL entrantes sont du type :
         // index.php?controleur=XXX&action=YYY&id=ZZZ
-        $ctrlAccueil = Configuration::get("ctrlAccueil");
+        $ctrlAccueil = Configuration::get("defaut");
         // Contrôleur par défaut
         // Choisir le contrôleur Admin si un utilisateur est en session
         if ($requete->getSession()->existeAttribut("idUtilisateur")) {

@@ -36,13 +36,17 @@ class ControleurAdminArticles extends ControleurAdmin {
 
 // Enregistre le nouvel article et retourne à la liste des articles
     public function nouvelArticle() {
-        $article['utilisateur_id'] = $this->requete->getParametreId('utilisateur_id');
-        $article['titre'] = $this->requete->getParametre('titre');
-        $article['sous_titre'] = $this->requete->getParametre('sous_titre');
-        $article['texte'] = $this->requete->getParametre('texte');
-        $article['type'] = $this->requete->getParametre('type');
-        $this->article->setArticle($article);
-        $this->executerAction('index');
+        if ($this->requete->getSession()->getAttribut("env") == 'prod') {
+            $this->requete->getSession()->setAttribut("message", "Ajouter un article n'est pas permis en démonstration");
+        } else {
+            $article['utilisateur_id'] = $this->requete->getParametreId('utilisateur_id');
+            $article['titre'] = $this->requete->getParametre('titre');
+            $article['sous_titre'] = $this->requete->getParametre('sous_titre');
+            $article['texte'] = $this->requete->getParametre('texte');
+            $article['type'] = $this->requete->getParametre('type');
+            $this->article->setArticle($article);
+            $this->executerAction('index');
+        }
     }
 
 // Modifier un article existant    
@@ -54,14 +58,18 @@ class ControleurAdminArticles extends ControleurAdmin {
 
 // Enregistre l'article modifié et retourne à la liste des articles
     public function miseAJour() {
-        $article['id'] = $this->requete->getParametreId('id');
-        $article['utilisateur_id'] = $this->requete->getParametreId('utilisateur_id');
-        $article['titre'] = $this->requete->getParametre('titre');
-        $article['sous_titre'] = $this->requete->getParametre('sous_titre');
-        $article['texte'] = $this->requete->getParametre('texte');
-        $article['type'] = $this->requete->getParametre('type');
-        $this->article->updateArticle($article);
-        $this->executerAction('index');
+        if ($this->requete->getSession()->getAttribut("env") == 'prod') {
+            $this->requete->getSession()->setAttribut("message", "Modifier un article n'est pas permis en démonstration");
+        } else {
+            $article['id'] = $this->requete->getParametreId('id');
+            $article['utilisateur_id'] = $this->requete->getParametreId('utilisateur_id');
+            $article['titre'] = $this->requete->getParametre('titre');
+            $article['sous_titre'] = $this->requete->getParametre('sous_titre');
+            $article['texte'] = $this->requete->getParametre('texte');
+            $article['type'] = $this->requete->getParametre('type');
+            $this->article->updateArticle($article);
+            $this->executerAction('index');
+        }
     }
 
 }

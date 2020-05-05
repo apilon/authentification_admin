@@ -11,15 +11,24 @@
     <li>L'application "Le Blogue du prof" permet de composer et de
         diffuser des articles sur des sujets variés.</li>
     <li>La page d'Accueil présente la liste des titres des articles
-        avec la date et l'auteur :</li>
+        avec la date et le nom de l'auteur :</li>
     <ul>
         <li>Cette version n'offre pas encore la gestion des auteurs.
             Les auteurs doivent être entrées manuellement dans la base de données.<br>
         </li>
         <li>
             Pour fin de démonstration, cette version offre la possibilité de changer de contrôleur d'accueil.<br/>
-            L'accueil présente alors plutôt la liste de tous les commentaires à l'accueil, avec un lien menant à l'article associé.<br/>
-            Cela peut vous être utile si vous désirez présenter à l'accueil le côté n de la relation 1 à n pour votre application.
+            L'accueil présente alors plutôt la liste de tous les commentaires à l'accueil :
+            <ul>
+                <li>
+                    Chaque commentaire indique alors le titre de l'article pour lequel il a été écrit, avec un lien vers cet article.
+                </li>
+                <li>
+                    Cela peut vous être utile si vous désirez présenter à l'accueil le côté n de la relation 1 à n pour votre application.
+                </li>
+            </ul>
+        </li>
+        <li>
             <form action="commentaires" method="post">
                 <input type="submit" value="Changer de controleur d'accueil">
             </form>
@@ -30,8 +39,11 @@
         <li>on retrouve un lien pour créer un nouvel article :
             <ul>
                 <li>
+                    L'article créé est attribué à l'utilisateur en session
+                </li>
+                <li>
                     La page de création d'un article offre de spécifier le sujet traité par
-                    l'article (type) par autocomplétion.<br>
+                    l'article (type) par autocomplétion.<br>(par http seulement ; ne fonctionne pas avec https pour l'instant)
                 </li>
             </ul>
         </li>
@@ -64,8 +76,8 @@
             <li>Pour l'instant cette fonctionnalité n'est pas encore
                 implantée et tous les commentaires sont affichés.</li>
         </ul>
-        <li>On peut effacer un commentaire après confirmation (par l'auteur de l'article dans la prochaine version).</li>
-        <li>Un commentaire effacé peut être rétabli (par l'auteur de l'article dans la prochaine version).</li>
+        <li>On peut effacer un commentaire après confirmation (par l'auteur de l'article dans une prochaine version).</li>
+        <li>Un commentaire effacé peut être rétabli (par l'auteur de l'article dans une prochaine version).</li>
         <li>Un commentaire ne peut pas être modifié.<br>
         </li>
     </ul>

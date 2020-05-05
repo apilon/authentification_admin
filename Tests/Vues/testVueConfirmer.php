@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Vue/Vue.php';
+require_once 'Framework/Vue.php';
 $commentaire = [
         'id' => '999',
         'article_id' => '111',
@@ -10,6 +10,6 @@ $commentaire = [
         'titre' => 'titre Test',
         'texte' => 'texte Test',
     ];
-$vue = new Vue('Confirmer');
-$vue->generer(['commentaire' => $commentaire]);
+$vue = new Vue('Confirmer', 'AdminCommentaires');
+$vue->generer(['commentaire' => $commentaire], null);
 

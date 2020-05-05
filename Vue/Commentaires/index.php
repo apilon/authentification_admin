@@ -10,8 +10,9 @@ foreach ($commentaires as $commentaire):
         <p><?= $this->nettoyer($commentaire['date']) ?>, <?= $this->nettoyer($commentaire['auteur']) ?> dit : (privé? <?= $this->nettoyer($commentaire['prive']) ?>)<br/>
             <strong><?= $this->nettoyer($commentaire['titre']) ?></strong><br/>
             <?= $this->nettoyer($commentaire['texte']) ?><br />
-            <a href="Articles/lire/<?= $this->nettoyer($commentaire['article_id']) ?>" >
-                [Voir l'article]</a>
+            <!-- Vers AdminArticles si utilisateur en session -->
+            <a href="<?= ($utilisateur != '') ? 'Admin' : '' ?>Articles/lire/<?= $this->nettoyer($commentaire['article_id']) ?>" >
+                [écrit pour l'article <i><?= $this->nettoyer($commentaire['titreArticle']) ?></i>]</a>
         </p>
     <?php endif; ?>
 <?php endforeach; ?>

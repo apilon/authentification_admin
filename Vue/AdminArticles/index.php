@@ -12,7 +12,7 @@
                 <h1 class="titreArticle"><?= $this->nettoyer($article['titre']) ?></h1>
             </a>
             <strong class=""><?= $this->nettoyer($article['sous_titre']) ?></strong>
-            <time><?= $this->nettoyer($article['date']) ?></time>, par utilisateur #<?= $this->nettoyer($article['utilisateur_id']) ?>
+            <time><?= $this->nettoyer($article['date']) ?></time>, par <?= $this->nettoyer($article['nom']) ?>
         </header>
         <p><?= $this->nettoyer($article['texte']) ?><br/>
             <em><?= $this->nettoyer($article['type']) ?></em>

@@ -11,8 +11,8 @@ class Article extends Modele {
 
 // Renvoie la liste de tous les articles, triés par identifiant décroissant
     public function getArticles() {
-        $sql = 'select * from Articles'
-                . ' order by ID desc';
+        $sql = 'select articles.id, titre, sous_titre, utilisateur_id, date, texte, type, nom from articles, utilisateurs'
+                . ' where articles.utilisateur_id = utilisateurs.id order by ID desc';
         $articles = $this->executerRequete($sql);
         return $articles;
     }
@@ -20,14 +20,15 @@ class Article extends Modele {
 // Renvoie la liste de tous les articles, triés par identifiant décroissant
     public function setArticle($article) {
         $sql = 'INSERT INTO articles (titre, sous_titre, utilisateur_id, date, texte, type) VALUES(?, ?, ?, NOW(), ?, ?)';
-        $result = $this->executerRequete($sql, [$article[titre], $article[sous_titre], $article[utilisateur_id], $article[texte], $article[type]]);
+        $result = $this->executerRequete($sql, [$article['titre'], $article['sous_titre'], $article['utilisateur_id'], $article['texte'], $article['type']]);
         return $result;
     }
 
 // Renvoie les informations sur un article
     function getArticle($idArticle) {
-        $sql = 'select * from Articles'
-                . ' where ID=?';
+        $sql = 'select articles.id, titre, sous_titre, utilisateur_id, date, texte, type, nom from articles, utilisateurs'
+                . ' where articles.utilisateur_id = utilisateurs.id and'
+                . ' articles.id=?';
         $article = $this->executerRequete($sql, [$idArticle]);
         if ($article->rowCount() == 1) {
             return $article->fetch();  // Accès à la première ligne de résultat
@@ -37,7 +38,7 @@ class Article extends Modele {
     }
 // Met à jour un article
     public function updateArticle($article) {
-        $sql = 'UPDATE Articles'
+        $sql = 'UPDATE articles'
                 . ' SET titre = ?, sous_titre = ?, utilisateur_id = ?, date = NOW(), texte = ?, type = ?'
                 . ' WHERE id = ?';
         $result = $this->executerRequete($sql, [$article['titre'], $article['sous_titre'], $article['utilisateur_id'], $article['texte'], $article['type'], $article['id']]);
