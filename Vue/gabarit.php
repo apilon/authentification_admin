@@ -13,6 +13,9 @@
             <header>
                 <a href="index.php"><h1 id="titreBlog">Le Blogue du prof v2.0.0.1</h1></a>
                 <p>Version avec démarrage de session pour accès aux opérations de gestion</p>
+                <a href="Commentaires">
+                    <h4>Afficher tous les commentaires de tous les articles</h4>
+                </a>
                 <a href="apropos">
                     <h4>À propos</h4>
                 </a>
