@@ -17,13 +17,11 @@
 <?php
 foreach ($commentaires as $commentaire):
     ?>
-    <?php if ($commentaire['efface'] == '0' && $commentaire['prive'] == '0') : ?>
         <p>
             <?= $this->nettoyer($commentaire['date']) ?>, <?= $this->nettoyer($commentaire['auteur']) ?> dit :<br/>
             <strong><?= $this->nettoyer($commentaire['titre']) ?></strong><br/>
             <?= $this->nettoyer($commentaire['texte']) ?>
         </p>
-    <?php endif; ?>
 <?php endforeach; ?>
 
 <form action="Commentaires/ajouter" method="post">

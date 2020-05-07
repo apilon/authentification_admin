@@ -16,7 +16,7 @@
     <input type="hidden" name="id" value="<?= $this->nettoyer($commentaire['id']) ?>" /><br />
     <input type="submit" value="Oui" />
 </form>
-<form action="AdminArticles/lire" method="post" >
+<form action="Adminarticles/lire" method="post" >
     <input type="hidden" name="id" value="<?= $this->nettoyer($commentaire['article_id']) ?>" />
     <input type="submit" value="Annuler" />
 </form>

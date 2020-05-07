@@ -33,7 +33,7 @@ class ControleurUtilisateurs extends Controleur {
                 if ($this->requete->getSession()->existeAttribut('erreur')) {
                     $this->requete->getsession()->setAttribut('erreur', '');
                 }
-                $this->rediriger("AdminArticles");
+                $this->rediriger("Adminarticles");
             } else {
                 $this->requete->getSession()->setAttribut('erreur', 'mdp');
                 $this->rediriger('Utilisateurs');

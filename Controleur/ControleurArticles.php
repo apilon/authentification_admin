@@ -25,7 +25,7 @@ class ControleurArticles extends Controleur {
         $idArticle = $this->requete->getParametreId("id");
         $article = $this->article->getArticle($idArticle);
         $erreur = $this->requete->getSession()->existeAttribut("erreur") ? $this->requete->getsession()->getAttribut("erreur") : '';
-        $commentaires = $this->commentaire->getCommentaires($idArticle);
+        $commentaires = $this->commentaire->getCommentairesPublics($idArticle);
         $this->genererVue(['article' => $article, 'commentaires' => $commentaires, 'erreur' => $erreur]);
     }
 

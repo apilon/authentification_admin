@@ -21,6 +21,19 @@ class Commentaire extends Modele {
         $commentaires = $this->executerRequete($sql, [$idArticle]);
         return $commentaires;
     }
+    
+    // Renvoie la liste des commentaires publics associés à un article
+    public function getCommentairesPublics($idArticle = NULL) {
+        if ($idArticle == NULL) {
+            $sql = 'select c.id, article_id, c.date, auteur, c.titre, c.texte, prive, efface, a.titre as titreArticle from commentaires as c, articles as a'
+                    . ' where c.article_id = a.id and c.efface != 0 and c.prive != 0';
+        } else {
+            $sql = 'select * from commentaires'
+                    . ' where article_id = ? and efface != 0 and prive != 0';
+        }
+        $commentaires = $this->executerRequete($sql, [$idArticle]);
+        return $commentaires;
+    }
 
 // Renvoie un commentaire spécifique
     public function getCommentaire($id) {

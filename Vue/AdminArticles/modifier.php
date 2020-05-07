@@ -3,7 +3,7 @@
 <header>
     <h1 id="titreReponses">Modifier un article de l'utilisateur 1 :</h1>
 </header>
-<form action="AdminArticles/miseAJour" method="post">
+<form action="Adminarticles/miseAJour" method="post">
     <h2>Modifier un article</h2>
     <p>
         <label for="auteur">Titre</label> : <input type="text" name="titre" id="titre" value="<?= $this->nettoyer($article['titre']) ?>" /> <br />

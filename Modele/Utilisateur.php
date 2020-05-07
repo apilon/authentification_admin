@@ -18,7 +18,7 @@ class Utilisateur extends Modele {
      */
     public function connecter($login, $mdp)
     {
-        $sql = "select id from Utilisateurs where identifiant = ? and mot_de_passe = ?";
+        $sql = "select id from utilisateurs where identifiant = ? and mot_de_passe = ?";
         $utilisateur = $this->executerRequete($sql, array($login, $mdp));
         return ($utilisateur->rowCount() == 1);
     }
@@ -34,7 +34,7 @@ class Utilisateur extends Modele {
     public function getUtilisateur($login, $mdp)
     {
         $sql = "select id, identifiant, mot_de_passe 
-            from Utilisateurs where identifiant = ? and mot_de_passe = ?";
+            from utilisateurs where identifiant = ? and mot_de_passe = ?";
         $utilisateur = $this->executerRequete($sql, array($login, $mdp));
         if ($utilisateur->rowCount() == 1)
             return $utilisateur->fetch();  // Accès à la première ligne de résultat

@@ -3,7 +3,7 @@
 <header>
     <h1 id="titreReponses">Ajouter un article au nom de <u><?= $utilisateur ?></u> :</h1>
 </header>
-<form action="AdminArticles/nouvelArticle" method="post">
+<form action="Adminarticles/nouvelArticle" method="post">
     <h2>Ajouter un article</h2>
     <p>
         <label for="auteur">Titre</label> : <input type="text" name="titre" id="titre" /> <br />

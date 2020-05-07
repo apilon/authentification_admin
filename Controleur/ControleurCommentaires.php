@@ -14,7 +14,7 @@ class ControleurCommentaires extends Controleur {
 // L'action index n'est pas utilisée mais pourrait ressembler à ceci 
 // en ajoutant la fonctionnalité de faire afficher tous les commentaires
     public function index() {
-        $commentaires = $this->commentaire->getCommentaires();
+        $commentaires = $this->commentaire->getCommentairesPublics();
         $this->genererVue(['commentaires' => $commentaires]);
     }
 

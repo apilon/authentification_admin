@@ -12,7 +12,7 @@ foreach ($commentaires as $commentaire):
             <?= $this->nettoyer($commentaire['date']) ?>, <?= $this->nettoyer($commentaire['auteur']) ?> dit : (privé? <?= $this->nettoyer($commentaire['prive']) ?>)<br/>
             <strong><?= $this->nettoyer($commentaire['titre']) ?></strong><br/>
             <?= $this->nettoyer($commentaire['texte']) ?><br />
-            <a href="AdminArticles/lire/<?= $this->nettoyer($commentaire['article_id']) ?>" >
+            <a href="Adminarticles/lire/<?= $this->nettoyer($commentaire['article_id']) ?>" >
                 [Voir l'article]</a>
         </p>
     <?php else : ?>
