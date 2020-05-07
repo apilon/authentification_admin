@@ -9,11 +9,11 @@ foreach ($commentaires as $commentaire):
     <?php if ($commentaire['efface'] == '0') : ?>
         <p><a href="AdminCommentaires/confirmer/<?= $this->nettoyer($commentaire['id']) ?>" >
                 [Effacer]</a>
-            <?= $this->nettoyer($commentaire['date']) ?>, <?= $this->nettoyer($commentaire['auteur']) ?> dit : (privé? <?= $this->nettoyer($commentaire['prive']) ?>)<br/>
+            <?= $this->nettoyer($commentaire['date']) ?>, <?= $this->nettoyer($commentaire['auteur']) ?> dit <?= $this->nettoyer($commentaire['prive']) ? '(EN PRIVÉ)' : '' ?> : <br/>
             <strong><?= $this->nettoyer($commentaire['titre']) ?></strong><br/>
             <?= $this->nettoyer($commentaire['texte']) ?><br />
             <a href="Adminarticles/lire/<?= $this->nettoyer($commentaire['article_id']) ?>" >
-                [Voir l'article]</a>
+                [écrit pour l'article <i><?= $this->nettoyer($commentaire['titreArticle']) ?></i>]</a></a>
         </p>
     <?php else : ?>
         <p class="efface"><a href="AdminCommentaires/retablir/<?= $this->nettoyer($commentaire['id']) ?>" >

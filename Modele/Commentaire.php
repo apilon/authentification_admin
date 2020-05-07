@@ -12,24 +12,47 @@ class Commentaire extends Modele {
     // Renvoie la liste des commentaires associés à un article
     public function getCommentaires($idArticle = NULL) {
         if ($idArticle == NULL) {
-            $sql = 'select c.id, article_id, c.date, auteur, c.titre, c.texte, prive, efface, a.titre as titreArticle from commentaires as c, articles as a'
-                    . ' where c.article_id = a.id';
+            $sql = 'SELECT c.id,'
+                    . ' c.article_id,'
+                    . ' c.date,'
+                    . ' c.auteur,'
+                    . ' c.titre,'
+                    . ' c.texte,'
+                    . ' c.prive,'
+                    . ' c.efface,'
+                    . ' a.titre as titreArticle'
+                    . ' FROM commentaires c'
+                    . ' INNER JOIN articles a'
+                    . ' ON c.article_id = a.id'
+                    . ' ORDER BY id desc';;
         } else {
-            $sql = 'select * from commentaires'
-                    . ' where article_id = ?';
+            $sql = 'SELECT * from commentaires'
+                    . ' WHERE article_id = ?'
+                    . ' ORDER BY id desc';;
         }
         $commentaires = $this->executerRequete($sql, [$idArticle]);
         return $commentaires;
     }
-    
+
     // Renvoie la liste des commentaires publics associés à un article
     public function getCommentairesPublics($idArticle = NULL) {
         if ($idArticle == NULL) {
-            $sql = 'select c.id, article_id, c.date, auteur, c.titre, c.texte, prive, efface, a.titre as titreArticle from commentaires as c, articles as a'
-                    . ' where c.article_id = a.id and c.efface != 0 and c.prive != 0';
+            $sql = 'SELECT c.id,'
+                    . ' c.article_id,'
+                    . ' c.date,'
+                    . ' c.auteur,'
+                    . ' c.titre,'
+                    . ' c.texte,'
+                    . ' c.prive,'
+                    . ' c.efface,'
+                    . ' a.titre as titreArticle'
+                    . ' FROM commentaires c, articles a'
+                    . ' WHERE c.efface = 0 AND c.prive = 0'
+                    . ' ORDER BY id desc';
         } else {
-            $sql = 'select * from commentaires'
-                    . ' where article_id = ? and efface != 0 and prive != 0';
+            $sql = 'SELECT * FROM commentaires'
+                    . ' WHERE article_id = ? AND efface != 0 AND prive != 0'
+                    . ' ORDER BY id desc';;
         }
         $commentaires = $this->executerRequete($sql, [$idArticle]);
         return $commentaires;
@@ -37,8 +60,8 @@ class Commentaire extends Modele {
 
 // Renvoie un commentaire spécifique
     public function getCommentaire($id) {
-        $sql = 'select * from commentaires'
-                . ' where id = ?';
+        $sql = 'SELECT * FROM commentaires'
+                . ' WHERE id = ?';
         $commentaire = $this->executerRequete($sql, [$id]);
         if ($commentaire->rowCount() == 1) {
             return $commentaire->fetch();  // Accès à la première ligne de résultat
@@ -67,8 +90,22 @@ class Commentaire extends Modele {
 
 // Ajoute un commentaire associés à un article
     public function setCommentaire($commentaire) {
-        $sql = 'INSERT INTO commentaires (article_id, date, auteur, titre, texte, prive) VALUES(?, NOW(), ?, ?, ?, ?)';
-        $result = $this->executerRequete($sql, [$commentaire['article_id'], $commentaire['auteur'], $commentaire['titre'], $commentaire['texte'], $commentaire['prive']]);
+        $sql = 'INSERT INTO commentaires ('
+                . 'article_id,'
+                . ' date,'
+                . ' auteur,'
+                . ' titre,'
+                . ' texte,'
+                . ' prive)'
+                . ' VALUES(?, NOW(), ?, ?, ?, ?)';
+        $result = $this->executerRequete($sql, [
+            $commentaire['article_id'],
+            $commentaire['auteur'],
+            $commentaire['titre'],
+            $commentaire['texte'],
+            $commentaire['prive']
+                ]
+        );
         return $result;
     }
 
