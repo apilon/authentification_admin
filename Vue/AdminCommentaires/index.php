@@ -18,7 +18,7 @@ foreach ($commentaires as $commentaire):
     <?php else : ?>
         <p class="efface"><a href="AdminCommentaires/retablir/<?= $this->nettoyer($commentaire['id']) ?>" >
                 [Rétablir]</a>
-            Commentaire du <?= $this->nettoyer($commentaire['date']) ?>, par <?= $this->nettoyer($commentaire['auteur']) ?> effacé! (privé? <?= $this->nettoyer($commentaire['prive']) ?>)
+            Commentaire du <?= $this->nettoyer($commentaire['date']) ?>, par <?= $this->nettoyer($commentaire['auteur']) ?> <?= $this->nettoyer($commentaire['prive']) ? '(EN PRIVÉ)' : '' ?> EFFACÉ!
         </p>
     <?php endif; ?>
 <?php endforeach; ?>

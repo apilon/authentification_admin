@@ -22,10 +22,10 @@
             </header>
             <?php if ($utilisateur != '') : ?>
                 <h3>Bonjour <?= $utilisateur ?>,
-                    <a href="Utilisateurs/deconnecter">[Se déconnecter]</a>
+                    <a href="Utilisateurs/deconnecter"><small>[Se déconnecter]</small></a>
                 </h3>
             <?php else : ?>
-                <h3><a href="Utilisateurs/index">[Se connecter (admin/admin)]</a></h3>
+            <h3>[<a href="Utilisateurs/index">Se connecter</a>] <small>(admin/admin)</small></h3>
             <?php endif; ?>
             <div id="contenu">
                 <?= $contenu ?>   <!-- Élément spécifique -->

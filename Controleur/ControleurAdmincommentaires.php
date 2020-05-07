@@ -34,7 +34,7 @@ class ControleurAdminCommentaires extends ControleurAdmin {
         // Supprimer le commentaire à l'aide du modèle
         $this->commentaire->deleteCommentaire($id);
         //Recharger la page pour mettre à jour la liste des commentaires associés
-        $this->rediriger('rticles', 'lire/' . $commentaire['article_id']);
+        $this->rediriger('Adminarticles', 'lire/' . $commentaire['article_id']);
     }
 
     // Rétablir un commentaire
@@ -45,7 +45,7 @@ class ControleurAdminCommentaires extends ControleurAdmin {
         // Supprimer le commentaire à l'aide du modèle
         $this->commentaire->restoreCommentaire($id);
         //Recharger la page pour mettre à jour la liste des commentaires associés
-        $this->rediriger('rticles', 'lire/' . $commentaire['article_id']);
+        $this->rediriger('Adminarticles', 'lire/' . $commentaire['article_id']);
     }
 
 }

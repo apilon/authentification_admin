@@ -29,7 +29,7 @@
             </ul>
         </li>
         <li>
-            <form action="commentaires" method="post">
+            <form action="<?= $utilisateur != '' ? 'Admin' : ''; ?>commentaires" method="post">
                 <input type="submit" value="Changer de controleur d'accueil">
             </form>
         </li>
