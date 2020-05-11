@@ -56,9 +56,10 @@ class Routeur {
         }
         if ($requete->existeParametre('controleur')) {
             $controleur = $requete->getParametre('controleur');
-            // Première lettre en majuscules
-            $controleur = ucfirst(strtolower($controleur));
         }
+        // Première lettre en majuscules
+        $controleur = ucfirst(strtolower($controleur));
+
         // Création du nom du fichier du contrôleur
         // La convention de nommage des fichiers controleurs est : Controleur/Controleur<$controleur>.php
         $classeControleur = "Controleur" . $controleur;

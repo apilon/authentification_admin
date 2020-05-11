@@ -46,12 +46,14 @@ class Commentaire extends Modele {
                     . ' c.prive,'
                     . ' c.efface,'
                     . ' a.titre as titreArticle'
-                    . ' FROM commentaires c, articles a'
+                    . ' FROM commentaires c'
+                    . ' INNER JOIN articles a'
+                    . ' ON c.article_id = a.id'
                     . ' WHERE c.efface = 0 AND c.prive = 0'
                     . ' ORDER BY id desc';
         } else {
             $sql = 'SELECT * FROM commentaires'
-                    . ' WHERE article_id = ? AND efface != 0 AND prive != 0'
+                    . ' WHERE article_id = ? AND efface = 0 AND prive = 0'
                     . ' ORDER BY id desc';;
         }
         $commentaires = $this->executerRequete($sql, [$idArticle]);
